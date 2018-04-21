@@ -1,0 +1,10 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  watches: [
+    {
+      name: "job1",
+      interval: 5
+    }
+  ]
+}

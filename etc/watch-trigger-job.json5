@@ -1,0 +1,20 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  jobs: [
+    {
+      name: "job2",
+      exec: "true",
+      when: {
+        source: "watch.job1",
+        each: "changed"
+      }
+    }
+  ],
+  watches: [
+    {
+      name: "job1",
+      interval: 5
+    }
+  ]
+}

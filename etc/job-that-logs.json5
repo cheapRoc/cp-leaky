@@ -1,0 +1,10 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  jobs: [
+    {
+      name: "job1",
+      exec: "/minimal/write-logs.sh"
+    }
+  ]
+}

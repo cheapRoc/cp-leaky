@@ -1,0 +1,16 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  jobs: [
+    {
+      name: "job1",
+      exec: "tail -F",
+      port: 8000,
+      health: {
+        exec: "true",
+        interval: 1,
+        ttl: 10
+      }
+    }
+  ]
+}
