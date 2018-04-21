@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
-  config.vm.hostname = "cp-soak"
+  config.vm.hostname = "cp-leaky"
   config.vm.box_check_update = false
   config.vm.network "private_network", ip: "172.16.30.5"
   config.vm.synced_folder ".", "/vagrant"
