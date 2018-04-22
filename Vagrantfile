@@ -9,8 +9,11 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provider "virtualbox" do |vb|
+    console_log = File.join(Dir.tmpdir, "ubuntu-xenial-16.04-cloudimg-console.log")
+
     vb.gui = false
     vb.memory = 4096
+    vb.customize ["modifyvm", :id, "--uartmode1", "file", console_log]
   end
 
   config.vm.provision "shell", inline: <<-SHELL
