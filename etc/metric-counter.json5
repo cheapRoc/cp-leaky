@@ -1,0 +1,27 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  jobs: [
+    {
+      name: "job1",
+      exec: "/minimal/containerpilot -config /minimal/etc/metric-counter.json5 -putmetric telemetry_test_count=1",
+      timeout: "30s",
+      when: {
+        interval: "1m",
+      }
+    }
+  ],
+  telemetry: {
+    port: 9090,
+    interfaces: ["lo"],
+    metrics: [
+      {
+        namespace: "telemetry",
+        subsystem: "test",
+        name: "count",
+        help: "I'm a little teapot",
+        type: "counter"
+      }
+    ]
+  }
+}

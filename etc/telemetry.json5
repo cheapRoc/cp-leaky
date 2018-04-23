@@ -1,0 +1,17 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  jobs: [
+    {
+      name: "job1",
+      exec: "curl -s -o /dev/null http://localhost:9090/metrics",
+      when: {
+        interval: "1m",
+      }
+    }
+  ],
+  telemetry: {
+    port: 9090,
+    interfaces: ["lo"]
+  }
+}

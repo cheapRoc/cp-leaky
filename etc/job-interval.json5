@@ -1,0 +1,13 @@
+{
+  consul: "consul:8500",
+  logging: { level: "INFO" },
+  jobs: [
+    {
+      name: "job1",
+      exec: "true",
+      when: {
+        interval: "1m",
+      },
+    }
+  ]
+}

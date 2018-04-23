@@ -76,12 +76,15 @@ in order to exercise specific features in isolation. Test configurations
 include...
 
 - `job-only.json5` configures just a job, excluding any other interactions.
+- `job-interval.json5` configures a job that runs on a set interval.
 - `job-that-logs.json5` configures a job that outputs through ContainerPilot's
   logging facility.
 - `job-with-health-check.json5` configures a job with a simple health check.
 - `job-with-service.json5` configures a job that is a service within Consul.
 - `watch-only.json5` configures and registers a Consul watch.
 - `watch-trigger-job.json5` configures a job that triggers from a Consul watch.
+- `telemetry.json5` configures the telemetry server and pings it every minute.
+- `metric-counter.json5` configures a custom counter and increments every minute.
 
 Each of these configurations are run within a separate container by the
 `bin/test.sh` script. Performance samples are made every 5 minutes which include
@@ -89,12 +92,3 @@ memory profile, goroutine stack trace, and pmap output.
 
 You should run these tests over an extended period of time to ensure that any
 variations are easy to observe.
-
-## Future
-
-Add jobs that exercise telemetry and metrics endpoints.
-
-- `telemetry.json5` configures the telemetry endpoint, excluding custom metrics.
-- `telemetry-metric.json5` configures a custom metric that can be harvested
-  through the telemetry endpoint.
-- `telemetry-metric-job.json5` configures a job that posts to a custom metric.
