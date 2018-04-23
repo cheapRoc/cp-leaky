@@ -25,14 +25,14 @@ do-pmap() {
     printf "\tSampling pmap for $name\n"
     name=$1
     pid=$(docker exec -it "$name" pgrep containerpilot | tail -1 | tr -d '[:space:]')
-    docker exec -it "$name" pmap -x "$pid" > "pmaps/${name}-$now"
+    docker exec -it "$name" pmap -x "$pid" > "pmaps/${name}_${now}.pmap"
 }
 
 do-profile() {
     printf "\tSampling pprof profile for $name\n"
     name=$1
     docker exec -it "$name" \
-           curl -so "/minimal/profiles/heap-${name}-${now}" \
+           curl -so "/minimal/profiles/${name}_${now}.heap" \
            "http://localhost:6060/debug/pprof/heap?debug=1"
 }
 
@@ -40,7 +40,7 @@ do-goroutine() {
     printf "\tSampling goroutine stacks for $name\n"
     name=$1
     docker exec -it "$name" \
-           curl -so "/minimal/goroutines/goroutine-${name}-${now}" \
+           curl -so "/minimal/goroutines/${name}_${now}.trace" \
            "http://localhost:6060/debug/pprof/goroutine?debug=1"
 }
 

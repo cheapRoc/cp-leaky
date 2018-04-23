@@ -1,11 +1,12 @@
 import csv
 import glob
 
-heap_files = glob.glob('profile/heap-*')
+heap_files = glob.glob('profiles/*.heap')
 csvfile = 'output.csv'
 csv_rows = []
 
 csv_fields = [
+    'type',
     'timestamp',
     'Alloc',
     'TotalAlloc',
@@ -67,7 +68,10 @@ writer.writeheader()
 for heap_file in heap_files:
     with open(heap_file, 'r') as f:
         print('processing {}...'.format(heap_file))
-        row = {'timestamp': heap_file.split('-')[1]}
+        row = {
+            'type': heap_file.split('_')[0].replace('profiles/', ''),
+            'timestamp': heap_file.split('_')[1].replace('.heap', '')
+        }
         start_processing = False
         for line in f.readlines():
             if start_processing:
