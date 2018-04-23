@@ -4,7 +4,7 @@
   jobs: [
     {
       name: "job1",
-      exec: "tail -F",
+      exec: "tail -f /dev/null",
       health: {
         exec: "true",
         interval: 1,

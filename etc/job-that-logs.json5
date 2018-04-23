@@ -4,7 +4,7 @@
   jobs: [
     {
       name: "job1",
-      exec: "/minimal/write-logs.sh"
+      exec: "/minimal/bin/write-logs.sh"
     }
   ]
 }
